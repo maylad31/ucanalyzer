@@ -1,0 +1,248 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>UCAnalyzer</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style>
+.myclass
+{
+background-color: white;
+}
+.form-control:focus{border-color: blue; border-width: 2px;  box-shadow: 10px 10px 5px #888888; -webkit-box-shadow: none;} 
+</style>
+    </head>
+<body>
+<script language="JavaScript">
+        $(document).ready(function() {
+        $("#a").submit(function(e) { // catch the form's submit event
+            e.preventDefault();
+            $.ajax({ // create an AJAX call...
+                data: $(this).serialize(), // get the form data
+                type: $(this).attr('method'), // GET or POST
+                url: $(this).attr('action'), // the file to call
+                
+                success: function(response) { // on success..
+                     window.scrollTo(0, 0);
+                     window.confirm("submitted");
+                     var s1="<h3>Errors and suggestions:</h3></br>"+"<h4>"+response+"</h4>";
+                     
+                    $('#yy').empty().append(s1); // update the DIV
+					
+					
+                    
+                }            
+            });
+            return false;
+        });
+     });
+</script>
+<div class="container">
+<div class="page-header myclass">
+<img src={% static "l.png" %}>
+</div>
+<div class="row">
+<div class="col-sm-7">
+<form id="a" action="/p/my_form"  method="post" enctype="multipart/form-data" style="margin-left:40px;">{% csrf_token %}
+{{ form.non_field_errors }}
+
+<div class="fieldWrapper form-inline">
+    {{ form.use_case_name.errors }}
+    <label for="{{ form.use_case_name.id_for_label }}">Use case Name:</label></br>
+    {{ form.use_case_name }}
+</div>
+
+<div class="fieldWrapper form-inline">
+    {{ form.primary_actor.errors }}
+</br>    <label for="{{ form.primary_actor.id_for_label }}">Actors:</label></br>
+    {{ form.primary_actor }}
+</div>
+
+<div class="fieldWrapper form-inline ">
+    {{ form.pc1.errors }}
+    </br><label>PreConditions:</label></br>
+   </br> <label for="{{ form.pc1.id_for_label }}">1:</label>
+      
+   {{ form.pc1 }}
+
+</div>
+<!--
+<div class="fieldWrapper form-inline">
+    {{ form.pc2.errors }}
+    </br><label for="{{ form.pc2.id_for_label }}">2:</label>
+    {{ form.pc2 }}
+</div>
+
+<div class="fieldWrapper form-inline">
+    {{ form.pc3.errors }}
+    </br><label for="{{ form.pc3.id_for_label }}">3:</label>
+    {{ form.pc3 }}
+</div>
+
+<div class="fieldWrapper form-inline">
+    {{ form.pc4.errors }}
+   </br> <label for="{{ form.pc4.id_for_label }}">4:</label>
+    {{ form.pc4 }}
+</div>
+-->
+<div class="fieldWrapper form-inline">
+    {{ form.poc1.errors }}
+    </br><label>PostConditions:</label></br>
+    </br><label for="{{ form.poc1.id_for_label }}">1:</label>
+    {{ form.poc1 }}
+</div>
+<!--
+<div class="fieldWrapper form-inline">
+    {{ form.poc2.errors }}
+   </br> <label for="{{ form.poc2.id_for_label }}">2:</label>
+    {{ form.poc2 }}
+</div>
+
+<div class="fieldWrapper form-inline">
+    {{ form.poc3.errors }}
+</br>    <label for="{{ form.poc3.id_for_label }}">3:</label>
+    {{ form.poc3 }}
+</div>
+
+<div class="fieldWrapper form-inline">
+    {{ form.poc4.errors }}
+</br>    <label for="{{ form.poc4.id_for_label }}">4:</label>
+    {{ form.poc4 }}
+</div>
+-->
+<div class="fieldWrapper form-inline">
+    {{ form.bf1.errors }}
+</br>    <label>Basic Flow:</label></br>
+  </br>  <label for="{{ form.bf1.id_for_label }}">1:</label>
+    {{ form.bf1 }}
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.bf2.errors }}
+    </br><label for="{{ form.bf2.id_for_label }}">2:</label>
+    {{ form.bf2 }}
+</div>
+
+<div class="fieldWrapper form-inline">
+    {{ form.bf3.errors }}
+    </br><label for="{{ form.bf3.id_for_label }}">3:</label>
+    {{ form.bf3 }}
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.bf4.errors }}
+    </br><label for="{{ form.bf4.id_for_label }}">4:</label>
+    {{ form.bf4 }}
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.bf5.errors }}
+    </br><label for="{{ form.bf5.id_for_label }}">5:</label>
+    {{ form.bf5 }}
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.bf6.errors }}
+    </br><label for="{{ form.bf6.id_for_label }}">6:</label>
+    {{ form.bf6 }}
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.bf7.errors }}
+    </br><label for="{{ form.bf7.id_for_label }}">7:</label>
+    {{ form.bf7 }}
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.bf8.errors }}
+    </br><label for="{{ form.bf8.id_for_label }}">8:</label>
+    {{ form.bf8 }}
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.bf9.errors }}
+    </br><label for="{{ form.bf6.id_for_label }}">9:</label>
+    {{ form.bf9 }}
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.bf10.errors }}
+    </br><label for="{{ form.bf10.id_for_label }}">10:</label>
+    {{ form.bf10 }}
+</div>
+
+<div class="fieldWrapper form-inline">
+    {{ form.bf11.errors }}
+    </br><label for="{{ form.bf11.id_for_label }}">11:</label>
+    {{ form.bf11 }}
+</div>
+<!--
+<div class="fieldWrapper form-inline">
+    {{ form.bf12.errors }}
+    </br><label for="{{ form.bf12.id_for_label }}">12:</label>
+    {{ form.bf12 }}
+</div>
+-->
+<div class="fieldWrapper form-inline">
+    {{ form.afn1.errors }}
+    {{ form.afd1.errors }}
+    <label>Alternate Flow:</label></br>
+    </br><label for="{{ form.afn1.id_for_label }}">Number:</label>
+    {{ form.afn1 }}</br>
+    </br><label for="{{ form.afd1.id_for_label }}">Description:</label>
+    <span class="af1">{{ form.afd1 }}</span>
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.afn2.errors }}
+    {{ form.afd2.errors }}
+    </br><label for="{{ form.afn2.id_for_label }}">Number:</label>
+    {{ form.afn2 }}</br>
+    </br><label for="{{ form.afd2.id_for_label }}">Description:</label>
+    <span class="af1">{{ form.afd2 }}</span>
+</div>
+<!--
+<div class="fieldWrapper form-inline">
+    {{ form.afn3.errors }}
+    {{ form.afd3.errors }}
+    </br><label for="{{ form.afn3.id_for_label }}">Number:</label>
+    {{ form.afn3 }}</br>
+    </br><label for="{{ form.afd3.id_for_label }}">Description:</label>
+    {{ form.afd3 }}
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.afn4.errors }}
+    {{ form.afd4.errors }}
+    </br><label for="{{ form.afn4.id_for_label }}">Number:</label>
+    {{ form.afn4 }}</br>
+    </br><label for="{{ form.afd4.id_for_label }}">Description:</label>
+    {{ form.afd4 }}
+</div>
+<div class="fieldWrapper form-inline">
+    {{ form.afn5.errors }}
+    {{ form.afd5.errors }}
+    </br><label for="{{ form.afn5.id_for_label }}">Number:</label>
+    {{ form.afn5 }}</br>
+    </br><label for="{{ form.afd5.id_for_label }}">Description:</label>
+    {{ form.afd5 }}
+</div>
+-->
+<div class="fieldWrapper form-inline">
+    {{ form.requirements.errors}}
+    
+    </br><label for="{{ form.requirements.id_for_label }}">Problem specification:</label></br>
+    {{ form.requirements }}</br>
+    
+</div>
+</br>
+<input class="btn btn-primary" type='submit' value='Submit' /></br>
+</br><a href="#" onclick="window.print();return false;" ><input class="btn btn-success" type="button"/ value="Print"></a>
+
+</form>
+</div>
+
+<div class="col-sm-5" style="height: 1000px; border-radius: 15px 50px; border-width: 15px; background-color: palegreen;">
+
+<div id="yy" >
+
+</div>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

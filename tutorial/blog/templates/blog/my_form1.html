@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>UCVT</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+<body>
+<div class="container">
+            {% block content %}
+             <ul>
+            
+            {% for key,value in dd1.items  %}
+             
+    {% for skill in value %}
+        <h4>{{ skill }}</h4></br>
+    {% endfor %}
+<a href="#" onclick="window.print();return false;"><h2>Print!</h2></a>
+            {% endfor %}
+  
+             </ul>
+            {% endblock %}
+
+</div>            
+</body>
+</html>
